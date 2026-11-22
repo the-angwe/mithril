@@ -39,7 +39,9 @@ const (
 	socketTagTPUVoteQuic     = 12
 	socketTagAlpenglow       = 13
 
-	versionClientMithril = 15
+	// Agave's Version has a numeric ClientId, not a string. Unknown IDs are
+	// accepted, so use a stable "MI" marker while keeping ClientName in logs.
+	versionClientMithril = 5
 )
 
 const (
@@ -121,6 +123,9 @@ func NewContactInfo(pubkey Pubkey, shredVersion uint16, gossipAddr, tvuAddr *net
 		ShredVer:  shredVersion,
 		Version: Version{
 			Client: versionClientMithril,
+			Major: 26,
+			Minor: 10,
+			Patch: 8,
 		},
 	}
 	if gossipAddr != nil {
