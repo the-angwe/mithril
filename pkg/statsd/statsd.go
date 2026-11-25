@@ -601,7 +601,7 @@ func StartMetricsServer() {
 	metricsServerStarted = true
 	http.Handle("/metrics", promhttp.Handler())
 	go func() {
-		addr := ":9090"
+		addr := "127.0.0.1:19090"
 		if err := http.ListenAndServe(addr, nil); err != nil {
 			mlog.Log.Errorf("Prometheus metrics server failed: %v", err)
 		}
